@@ -145,10 +145,7 @@ b) Chemiosmosis: Protons flow back into the matrix through ATP synthase, driving
       return probe.getBoundingClientRect().width;
     };
 
-    const paragraphs = rawText.replace(/
-/g, "
-").split("
-");
+    const paragraphs = rawText.replace(/\r\n?/g, "\n").split("\n");
     const wrappedLines = [];
 
     for (const para of paragraphs) {
