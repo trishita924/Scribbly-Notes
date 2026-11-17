@@ -1,19 +1,45 @@
 # Scribbly Notes
 
-**Scribbly Notes** is a completely offline, zero-dependency web application that transforms typed study notes into clean, natural-looking handwritten notebook pages.
+### Transform Your Typed Notes into Handwritten-Style Pages
 
-> **Responsible Use Notice:** Scribbly Notes is designed exclusively for personal study notes, revision sheets, flashcards, and creative journaling. It must not be used to submit generated pages as handwritten academic assignments.
+Scribbly Notes is a browser-based application that converts typed text into handwritten-style notebook pages. It provides a creative and customizable way to present digital notes with different handwriting styles, ink colours, and paper designs.
+
+## Live Demo
+
+https://trishita924.github.io/Scribbly-Notes/
 
 ## Features
-- **100% Offline & Self-Contained:** Runs directly from `index.html` with local fonts, styles, scripts, and SVG icons—no internet connection, CDNs, or build tools required.
-- **3 Handwriting Styles:** Switch between *Casual*, *Neat*, and *Classic* handwriting styles.
-- **5 Ink Colours:** Ballpoint Blue, Carbon Black, Crimson Red, Forest Green, and Plum Purple.
-- **3 Paper Backgrounds:** Lined notebook paper (with red margin & binder holes), Plain paper, and Grid paper.
-- **Natural Handwriting Variation:** Deterministic per-word micro-variations in baseline drift, tilt angle, scale, and word spacing so pages feel organic while remaining effortless to read.
-- **Automatic Multi-Page Pagination:** Measures line widths accurately and flows long notes across multiple pages without ever slicing a line of text in half.
-- **PNG & Selectable PDF Export:** Download any individual page as a high-resolution PNG image, or export the complete multi-page notebook as a selectable, copyable PDF via the built-in print-to-PDF layout.
 
-## Quick Start
-1. Extract or open the `Scribbly-Notes` folder.
-2. Double-click `index.html` in any modern browser (Chrome, Edge, Firefox, Safari).
-3. Type or paste your study notes, customize the handwriting style, ink, and paper, and export as PNG or PDF.
+- Convert typed text into handwritten-style notes.
+- Choose from available handwriting styles.
+- Customize ink colours and notebook paper designs.
+- Automatically format content across multiple pages.
+- Export notebook pages.
+- Responsive and user-friendly interface.
+- Designed for offline use.
+
+## Technologies Used
+
+- HTML5
+- CSS3
+- JavaScript
+
+## How to Use
+
+1. Open the live website.
+2. Enter or paste your notes.
+3. Customize the handwriting style, ink colour, and paper.
+4. Preview your notebook pages.
+5. Export your finished notes.
+
+## Project Purpose
+
+The purpose of Scribbly Notes is to make digital note-taking more creative by combining the convenience of typed text with the appearance of handwritten notes.
+
+## Developer
+
+Created as part of the GenAI Internship Projects.
+
+## License
+
+See the project files for licensing information.
