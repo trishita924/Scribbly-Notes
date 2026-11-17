@@ -1,0 +1,11 @@
+PROJECT NAME: Scribbly Notes
+PURPOSE: Offline Personal Study Notebook Maker
+
+ARCHITECTURE & DESIGN:
+- Pure HTML5, CSS3, and Vanilla JavaScript (ES6+) with zero external libraries.
+- Root-level index.html for instant offline use and direct GitHub Pages hosting.
+- Local @font-face declarations pointing to assets/fonts/ with offline cursive fallbacks.
+- Line-locked pagination engine (24 lines per page at 32px line-height) guaranteeing no horizontal line splitting across page boundaries.
+- Dual export pipeline:
+  1. High-DPI HTML5 Canvas renderer for single-page PNG image downloads.
+  2. Print-media multi-page vector DOM layout preserving selectable, copyable text when exported to PDF.

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scribbly Notes — Offline Handwritten Study Notebook</title>
+  <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand">
+      <img src="assets/icons/pen.svg" alt="" class="brand-icon" width="24" height="24" />
+      <div>
+        <h1>Scribbly Notes</h1>
+        <p class="subtitle">Offline Personal Study Notebook Maker</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="btn-sample" type="button" class="btn btn-ghost" title="Load a multi-page study note sample">
+        Load 3-Page Sample
+      </button>
+      <button id="btn-clear" type="button" class="btn btn-ghost" title="Clear editor">
+        Clear
+      </button>
+    </div>
+  </header>
+
+  <main class="workspace">
+    <!-- Left Panel: Controls & Editor -->
+    <section class="editor-panel card" aria-label="Note Editor and Styling Controls">
+      <div class="control-group">
+        <label for="note-title" class="field-label">Notebook Page Title</label>
+        <input
+          type="text"
+          id="note-title"
+          class="text-input"
+          value="Biology 101 — Cellular Respiration Notes"
+          placeholder="Enter your study note title..."
+          maxlength="90"
+        />
+      </div>
+
+      <div class="controls-grid">
+        <!-- Handwriting Style -->
+        <div class="control-group">
+          <label for="font-style" class="field-label">Handwriting Style</label>
+          <select id="font-style" class="select-input">
+            <option value="casual" selected>Casual Handwriting</option>
+            <option value="neat">Neat Handwriting</option>
+            <option value="classic">Classic Handwriting</option>
+          </select>
+        </div>
+
+        <!-- Paper Style -->
+        <div class="control-group">
+          <label for="paper-style" class="field-label">Paper Style</label>
+          <select id="paper-style" class="select-input">
+            <option value="lined" selected>Lined Paper</option>
+            <option value="plain">Plain Paper</option>
+            <option value="grid">Grid Paper</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Ink Colours -->
+      <div class="control-group">
+        <span class="field-label" id="ink-label">Ink Colour</span>
+        <div class="ink-swatches" role="radiogroup" aria-labelledby="ink-label">
+          <button type="button" class="swatch active" data-ink="blue" aria-checked="true" role="radio" title="Ballpoint Blue">
+            <span class="swatch-dot" style="background:#1b4f9c;"></span> Blue
+          </button>
+          <button type="button" class="swatch" data-ink="black" aria-checked="false" role="radio" title="Carbon Black">
+            <span class="swatch-dot" style="background:#232220;"></span> Black
+          </button>
+          <button type="button" class="swatch" data-ink="red" aria-checked="false" role="radio" title="Crimson Red">
+            <span class="swatch-dot" style="background:#a82828;"></span> Red
+          </button>
+          <button type="button" class="swatch" data-ink="green" aria-checked="false" role="radio" title="Forest Green">
+            <span class="swatch-dot" style="background:#1f6b43;"></span> Green
+          </button>
+          <button type="button" class="swatch" data-ink="purple" aria-checked="false" role="radio" title="Plum Purple">
+            <span class="swatch-dot" style="background:#5c2d82;"></span> Purple
+          </button>
+        </div>
+      </div>
+
+      <!-- Natural Variation Toggle / Intensity -->
+      <div class="control-group variation-row">
+        <label for="variation-level" class="field-label">Natural Handwriting Variation</label>
+        <div class="slider-wrap">
+          <input type="range" id="variation-level" min="0" max="100" value="65" />
+          <span id="variation-value" class="badge">65%</span>
+        </div>
+      </div>
+
+      <!-- Main Note Textarea -->
+      <div class="control-group editor-grow">
+        <div class="label-row">
+          <label for="note-body" class="field-label">Study Notes</label>
+          <span id="word-count" class="meta-text">0 words</span>
+        </div>
+        <textarea
+          id="note-body"
+          class="note-textarea"
+          placeholder="Start typing your study notes here... Long notes automatically flow onto additional notebook pages without cutting lines in half."
+        ></textarea>
+      </div>
+
+      <!-- Export Actions -->
+      <div class="export-bar">
+        <button id="btn-export-png" type="button" class="btn btn-secondary">
+          <img src="assets/icons/download-png.svg" alt="" width="16" height="16" />
+          Download Page (PNG)
+        </button>
+        <button id="btn-export-pdf" type="button" class="btn btn-primary">
+          <img src="assets/icons/export-pdf.svg" alt="" width="16" height="16" />
+          Export Notebook (PDF)
+        </button>
+      </div>
+
+      <p class="study-notice">
+        For personal study notes, revision sheets, and creative journaling only.
+      </p>
+    </section>
+
+    <!-- Right Panel: Live Notebook Preview -->
+    <section class="preview-panel" aria-label="Live Notebook Preview">
+      <div class="preview-toolbar card">
+        <button id="btn-prev-page" type="button" class="btn btn-nav" disabled>
+          &larr; Previous
+        </button>
+        <div class="page-indicator" aria-live="polite">
+          Page <strong id="current-page-num">1</strong> of <strong id="total-pages-num">1</strong>
+        </div>
+        <button id="btn-next-page" type="button" class="btn btn-nav" disabled>
+          Next &rarr;
+        </button>
+      </div>
+
+      <div class="notebook-stage">
+        <div id="notebook-sheet" class="notebook-sheet paper-lined ink-blue font-casual" role="region" aria-label="Rendered Notebook Page">
+          <div class="binder-holes" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="margin-line" aria-hidden="true"></div>
+
+          <header class="sheet-header">
+            <h2 id="sheet-title-render" class="sheet-title"></h2>
+            <span id="sheet-date-render" class="sheet-page-tag">Page 1</span>
+          </header>
+
+          <div id="sheet-lines-container" class="sheet-lines"></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Hidden measurement container for exact line-wrapping & pagination -->
+  <div id="measure-sandbox" class="measure-sandbox" aria-hidden="true"></div>
+
+  <!-- Print-only container for multi-page selectable vector PDF export -->
+  <div id="print-notebook-container" class="print-only" aria-hidden="true"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
